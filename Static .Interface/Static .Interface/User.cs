@@ -4,7 +4,7 @@ namespace Static_.Interface
 {
     internal class User : IAccount
     {
-        private int _id;
+        private  static int _id;
         private  string _password;
         public  int Id
         {
@@ -15,7 +15,7 @@ namespace Static_.Interface
             private set
             {
                 _id = 1;
-                Id++;
+                
             }
         }
         public  string Fullname { get; set; }
@@ -34,20 +34,20 @@ namespace Static_.Interface
         }
 
 
-
-
-
-       
-
         public User(string email, string password) // yarandığı zaman email və password təyin edilməsi məcburidir
         {
             Password = password;
             Email = email;
+            if (PasswordChecker(password))
+            {
+                _id++;
+
+            }
         }        //public static int IdNo()
 
         public bool PasswordChecker(string password)
         {
-            Password = password;
+           
             //  - şifrədə minimum 8 character olmalıdı
             bool result = false;
             bool result1 = false;//   - şifrədə ən az 1 böyük hərf olmalıdır
