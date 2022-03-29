@@ -25,7 +25,10 @@ namespace Static_.Interface
             get { return _password; }
             set
             {
-                
+                if (PasswordChecker(value))
+                {
+                     _password=value;
+                }
 
             }
         }
@@ -34,7 +37,15 @@ namespace Static_.Interface
 
 
 
-        bool IAccount.PasswordChecker(string password)
+       
+
+        public User(string email, string password) // yarandığı zaman email və password təyin edilməsi məcburidir
+        {
+            Password = password;
+            Email = email;
+        }        //public static int IdNo()
+
+        public bool PasswordChecker(string password)
         {
             Password = password;
             //  - şifrədə minimum 8 character olmalıdı
@@ -56,18 +67,14 @@ namespace Static_.Interface
             }
             return result;
         }
-            public void ShowIfo() 
+      
+
+        public void ShowIfo()
         {
             Console.WriteLine($"ID: {Id}\n" +
      $"Fullname: {Fullname}\n" +
-     $"Email: {Email}");
+     $"Email: {Email}"); ;
         }
-
-        public User(string email, string password) // yarandığı zaman email və password təyin edilməsi məcburidir
-        {
-            Password = password;
-            Email = email;
-        }        //public static int IdNo()
         //{
         //    return Id++;
         //}
